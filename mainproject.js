@@ -107,7 +107,13 @@ if (keyCode === 70){
 function keyReleased() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
    
-   
-  
-}
+   }
+class Particle{
+constructor(){
 
+    this.pos = p5.Vector.random2D().mult(250);
+}
+show(){
+    
+}
+}
