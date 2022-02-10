@@ -15,7 +15,7 @@ function preload(){
 }
 
 function setup() {
-    window.alert("Welcome to Dramatic blues by Chason. We will be using the work to examine saddness and ice. Move your mouse around or click to make the squares become like ice. Have fun dragging your mouse across the screen or click to make the squares dance in a random pattern. Press H if you would like to check out the different shades and hues of blue. You see that big circle in the middle. Press D once to hear a song and vibe. Press F to pause. PLEASE ONLY PRESS ONCE. THANK YOU");
+    window.alert("Welcome to Dramatic blues by Chason. We will be using the work to examine sadness and ice. Move your mouse around or click to make the squares become like ice. Have fun dragging your mouse across the screen or click to make the squares dance in a random pattern. Press H if you would like to check out the different shades and hues of blue. You see that big circle in the middle. Press D once to hear a song and vibe. Press F to pause. PLEASE ONLY PRESS ONCE. THANK YOU");
   createCanvas(1600, 1600);
   angleMode(DEGREES);
   fft = new p5.FFT();
