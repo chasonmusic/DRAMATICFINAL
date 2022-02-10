@@ -9,7 +9,7 @@ var c = Math.floor(Math.random() * 256);;
 var song; 
 var fft;
 var wave;
-
+var particles = [];
 function preload(){
   song = loadSound('DRAMATIC.mp3');
 }
@@ -77,6 +77,17 @@ for (var i = 0; i <= 180; i+= .5){
 }
 endShape();
 }
+
+var p = new Particle();
+particles.push(p);
+
+
+for (var i= 0; i < particles.length; i++){
+    particles[i].update();
+    particles[i].show(); 
+}
+    
+   
 }
 
 function mousePressed() {
@@ -112,8 +123,18 @@ class Particle{
 constructor(){
 
     this.pos = p5.Vector.random2D().mult(250);
+    this.vel = createVector(0,0);
+    this.acc = this.pos.copy().mult(random(0.0001, 0.00001));
+
+    this.w = random(3,5);
+}
+update(){
+this.vel.add(this.acc);
+this.pos.add(this.vel);
 }
 show(){
-    
+    noStroke(); 
+    fill(0,0,255);
+    ellipse(this.pos.x, this.pos.y, 4)
 }
 }
