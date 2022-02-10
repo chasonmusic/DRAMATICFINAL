@@ -27,7 +27,9 @@ function setup() {
 function draw() {
     clear();
     fill(r,g,b,c);
-    
+    strokeWeight(3);
+fft.analyze();
+    amp =fft.getEnergy(20, 200);
 
   
   
@@ -82,9 +84,14 @@ var p = new Particle();
 particles.push(p);
 
 
-for (var i= 0; i < particles.length; i++){
-    particles[i].update();
+for (var i= particles.length - 1; i >= 0; i--){
+   if(!particles[i].edges()){
+    particles[i].update(amp >230);
     particles[i].show(); 
+} else{
+    particles.splice(i,1);
+}
+
 }
     
    
@@ -127,14 +134,29 @@ constructor(){
     this.acc = this.pos.copy().mult(random(0.0001, 0.00001));
 
     this.w = random(3,5);
+    this.color =[random(200,255),random(200,255), random(200,255),];
 }
-update(){
+update(cond){
 this.vel.add(this.acc);
 this.pos.add(this.vel);
+if (cond){
+    this.pos.add(this.vel);
+    this.pos.add(this.vel);
+    this.pos.add(this.vel);
+
+}
+}
+
+edges(){
+ if (this.pos.x< -width/2 || this.pos.x> width/2||this.pos.y < - height || this.pos.y >height /2){
+     return true; 
+ } else {
+   return false;
+ }
 }
 show(){
     noStroke(); 
-    fill(0,0,255);
+    fill(this.color);
     ellipse(this.pos.x, this.pos.y, 4)
 }
 }
